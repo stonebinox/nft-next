@@ -5,6 +5,7 @@ import styled from "styled-components";
 import styles from "./page.module.css";
 import { Navbar } from "@/components/navbar";
 import { PageTitle } from "@/components/page-title";
+import { NFTList } from "@/components/nft-list";
 
 const Main = styled.main`
   background: url(/assets/bg.png) no-repeat center;
@@ -16,6 +17,7 @@ export default function Home() {
     <Main className={styles.main}>
       <Navbar />
       <PageTitle title="Listing Owned NFTs" />
+      <NFTList />
     </Main>
   );
 }
