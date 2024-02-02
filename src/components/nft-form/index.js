@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import {
+  Button,
+  ButtonGroup,
   FileSelector,
   FileSelectorSubtext,
   FileSelectorTitle,
@@ -50,6 +52,10 @@ export const NFTForm = () => {
         placeholder="Description"
         onChange={(e) => setNftDesc(e.currentTarget.value)}
       />
+      <ButtonGroup>
+        <Button>Mint without listing</Button>
+        <Button type="primary">Mint and list immediately</Button>
+      </ButtonGroup>
     </FormContainer>
   );
 };
