@@ -7,10 +7,14 @@ import {
   FileSelectorTitle,
   FormContainer,
   HiddenFileSelector,
+  InputField,
+  TextareaField,
 } from "./index.styles";
 
 export const NFTForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [nftTitle, setNftTitle] = useState("");
+  const [nftDesc, setNftDesc] = useState("");
 
   const fileClick = () => {
     document.nftupload.file.click();
@@ -35,6 +39,17 @@ export const NFTForm = () => {
         </FileSelectorTitle>
         <FileSelectorSubtext>format supported</FileSelectorSubtext>
       </FileSelector>
+      <InputField
+        type="text"
+        name="nft-title"
+        placeholder="NFT Title"
+        onChange={(e) => setNftTitle(e.currentTarget.value)}
+      />
+      <TextareaField
+        name="nft-description"
+        placeholder="Description"
+        onChange={(e) => setNftDesc(e.currentTarget.value)}
+      />
     </FormContainer>
   );
 };

@@ -50,3 +50,30 @@ export const HiddenFileSelector = styled.input`
     position: absolute;
   }
 `;
+
+const commonStyles = `
+width: 100%;
+border: 1px solid ${colors.grey};
+background: ${colors.greyDark};
+padding: ${BASE_SPACING};
+color: ${colors.white};
+font-family: "Open Sans", sans-serif;
+font-size: 16px;
+font-weight: 400;
+text-align: left;
+height: ${customSpacing("60")};
+border-radius: ${customSpacing("5")};
+margin-bottom: ${BASE_SPACING};
+`;
+
+export const InputField = styled.input`
+  &[type="text"] {
+    ${commonStyles}
+  }
+`;
+
+export const TextareaField = styled.textarea`
+  ${commonStyles}
+  height: auto;
+  min-height: ${customSpacing("158")};
+`;
