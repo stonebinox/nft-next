@@ -51,6 +51,7 @@ export const HiddenFileSelector = styled.input`
   }
 `;
 
+// technically I'd abstract this to a base input class and have it imported across multiple input types but we only have two here so this should be enough
 const commonStyles = `
 width: 100%;
 border: 1px solid ${colors.grey};
