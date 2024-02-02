@@ -3,6 +3,8 @@ import Image from "next/image";
 
 import {
   ButtonGroup,
+  ErrorContainer,
+  ErrorText,
   FileSelector,
   FileSelectorSubtext,
   FileSelectorTitle,
@@ -12,11 +14,14 @@ import {
   TextareaField,
 } from "./index.styles";
 import { Button } from "@/app/page.styles";
+import { useModalContext } from "@/helpers/modal-context";
 
 export const NFTForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [nftTitle, setNftTitle] = useState("");
   const [nftDesc, setNftDesc] = useState("");
+  const [error, setError] = useState("");
+  const { showModal, hideModal } = useModalContext();
 
   const fileClick = () => {
     document.nftupload.file.click();
@@ -26,8 +31,36 @@ export const NFTForm = () => {
     setSelectedFile(e.currentTarget.files[0]);
   };
 
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    if (!selectedFile) {
+      setError("Please select a file.");
+      return;
+    }
+
+    if (!nftTitle || nftTitle.trim() === "") {
+      setError("Enter a valid title");
+      return;
+    }
+
+    if (!nftDesc || nftDesc.trim() === "") {
+      setError("Enter a valid description");
+      return;
+    }
+
+    setError("");
+
+    showModal();
+  };
+
   return (
     <FormContainer name="nftupload">
+      {error !== "" && (
+        <ErrorContainer>
+          <ErrorText>{error}</ErrorText>
+        </ErrorContainer>
+      )}
       <FileSelector onClick={fileClick}>
         <HiddenFileSelector type="file" name="file" onChange={fileSelect} />
         <FileSelectorTitle>
@@ -37,7 +70,7 @@ export const NFTForm = () => {
             width="16"
             height="16"
           />{" "}
-          Upload Image
+          {!selectedFile ? "Upload Image" : "Image selected"}
         </FileSelectorTitle>
         <FileSelectorSubtext>format supported</FileSelectorSubtext>
       </FileSelector>
@@ -54,7 +87,9 @@ export const NFTForm = () => {
       />
       <ButtonGroup>
         <Button>Mint without listing</Button>
-        <Button type="primary">Mint and list immediately</Button>
+        <Button type="primary" onClick={submitForm}>
+          Mint and list immediately
+        </Button>
       </ButtonGroup>
     </FormContainer>
   );

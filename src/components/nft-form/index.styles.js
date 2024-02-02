@@ -86,3 +86,17 @@ export const ButtonGroup = styled.div`
   align-items: center;
   width: 100%;
 `;
+
+export const ErrorContainer = styled.div`
+  width: 100%;
+  text-align: center;
+  border: 1px solid ${colors.red};
+  border-radius: ${customSpacing("5")};
+  padding: ${BASE_SPACING} 0;
+  margin-bottom: ${BASE_SPACING};
+  background-color: ${colors.redLight};
+`;
+
+export const ErrorText = styled(CommonText)`
+  color: ${colors.white};
+`;
