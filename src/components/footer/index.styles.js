@@ -1,4 +1,4 @@
-import { CommonText } from "@/app/page.styles";
+import { Button, CommonText } from "@/app/page.styles";
 import { colors } from "@/utils/colors";
 import { BASE_SPACING, MAX_SCREEN } from "@/utils/spacing";
 import styled from "styled-components";
@@ -31,4 +31,8 @@ export const FooterText = styled(CommonText)`
 
 export const EmptyDiv = styled.div`
   width: 150px;
+`;
+
+export const FooterButton = styled(Button)`
+  flex: none;
 `;

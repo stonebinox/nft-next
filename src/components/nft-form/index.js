@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import {
-  Button,
   ButtonGroup,
   FileSelector,
   FileSelectorSubtext,
@@ -12,6 +11,7 @@ import {
   InputField,
   TextareaField,
 } from "./index.styles";
+import { Button } from "@/app/page.styles";
 
 export const NFTForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);

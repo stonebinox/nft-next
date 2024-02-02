@@ -2,6 +2,7 @@ import React from "react";
 
 import {
   EmptyDiv,
+  FooterButton,
   FooterContainer,
   FooterContent,
   FooterText,
@@ -14,7 +15,11 @@ export const Footer = ({ buttonDisplay = false }) => {
       <FooterContent>
         <Logo />
         <FooterText>NFT Sea 2022 &copy; All rights reserved</FooterText>
-        {buttonDisplay ? <div></div> : <EmptyDiv />}
+        {buttonDisplay ? (
+          <FooterButton type="primary">Explore Marketplace</FooterButton>
+        ) : (
+          <EmptyDiv />
+        )}
       </FooterContent>
     </FooterContainer>
   );

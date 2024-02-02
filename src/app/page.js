@@ -16,10 +16,10 @@ export default function Home() {
       <Navbar />
       <PageTitle
         title="Mint New NFT"
-        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem tortor quis amet scelerisque vivamus egestas. "
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem tortor quis amet scelerisque vivamus egestas."
       />
       <NFTForm />
-      <Footer />
+      <Footer buttonDisplay={true} />
     </Main>
   );
 }
