@@ -43,3 +43,10 @@ export const FileSelectorSubtext = styled(CommonText)`
   opacity: 0.6;
   margin-top: ${QUARTER_BASE_SPACING};
 `;
+
+export const HiddenFileSelector = styled.input`
+  &[type="file"] {
+    opacity: 0;
+    position: absolute;
+  }
+`;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 import {
@@ -6,12 +6,24 @@ import {
   FileSelectorSubtext,
   FileSelectorTitle,
   FormContainer,
+  HiddenFileSelector,
 } from "./index.styles";
 
 export const NFTForm = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const fileClick = () => {
+    document.nftupload.file.click();
+  };
+
+  const fileSelect = (e) => {
+    setSelectedFile(e.currentTarget.files[0]);
+  };
+
   return (
     <FormContainer name="nftupload">
-      <FileSelector>
+      <FileSelector onClick={fileClick}>
+        <HiddenFileSelector type="file" name="file" onChange={fileSelect} />
         <FileSelectorTitle>
           <Image
             src="/assets/upload-icon.svg"
