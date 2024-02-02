@@ -7,17 +7,16 @@ import { Navbar } from "@/components/navbar";
 import { PageTitle } from "@/components/page-title";
 import { NFTList } from "@/components/nft-list";
 import { Footer } from "@/components/footer";
-
-const Main = styled.main`
-  background: url(/assets/bg.png) no-repeat center;
-  background-size: cover;
-`;
+import { Main } from "./page.styles";
 
 export default function Home() {
   return (
     <Main className={styles.main}>
       <Navbar />
-      <PageTitle title="Listing Owned NFTs" />
+      <PageTitle
+        title="Mint New NFT"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem tortor quis amet scelerisque vivamus egestas. "
+      />
       <NFTList />
       <Footer />
     </Main>

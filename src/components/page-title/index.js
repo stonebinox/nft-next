@@ -1,11 +1,12 @@
 import React from "react";
 
-import { TitleContainer, TitleText } from "./index.styles";
+import { SubtitleText, TitleContainer, TitleText } from "./index.styles";
 
-export const PageTitle = ({ title = "" }) => {
+export const PageTitle = ({ title = "", subtitle = "" }) => {
   return (
     <TitleContainer>
       <TitleText>{title}</TitleText>
+      {subtitle.trim() !== "" && <SubtitleText>{subtitle}</SubtitleText>}
     </TitleContainer>
   );
 };
