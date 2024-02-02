@@ -5,9 +5,10 @@ import styled from "styled-components";
 import styles from "./page.module.css";
 import { Navbar } from "@/components/navbar";
 import { PageTitle } from "@/components/page-title";
-import { NFTList } from "@/components/nft-list";
+// import { NFTList } from "@/components/nft-list"; // we don't need this
 import { Footer } from "@/components/footer";
 import { Main } from "./page.styles";
+import { NFTForm } from "@/components/nft-form";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
         title="Mint New NFT"
         subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem tortor quis amet scelerisque vivamus egestas. "
       />
-      <NFTList />
+      <NFTForm />
       <Footer />
     </Main>
   );

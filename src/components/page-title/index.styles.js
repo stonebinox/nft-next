@@ -7,6 +7,7 @@ import {
   MAX_SCREEN,
   customSpacing,
 } from "@/utils/spacing";
+import { CommonText } from "@/app/page.styles";
 
 export const TitleContainer = styled.div`
   width: 100%;
@@ -33,13 +34,9 @@ export const TitleText = styled.div`
   display: inline-block;
 `;
 
-export const SubtitleText = styled.div`
+export const SubtitleText = styled(CommonText)`
   width: auto;
   max-width: ${customSpacing("560")};
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: ${colors.white};
   text-align: center;
   margin: 0 auto;
   margin-top: ${BASE_SPACING};

@@ -1,3 +1,4 @@
+import { CommonText } from "@/app/page.styles";
 import { colors } from "@/utils/colors";
 import { BASE_SPACING, MAX_SCREEN } from "@/utils/spacing";
 import styled from "styled-components";
@@ -23,12 +24,8 @@ export const FooterContent = styled.div`
   margin: 0 auto;
 `;
 
-export const FooterText = styled.div`
+export const FooterText = styled(CommonText)`
   text-align: center;
-  color: ${colors.white};
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
   flex: 1;
 `;
 
