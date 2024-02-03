@@ -37,7 +37,7 @@ export const Navbar = () => {
           </WalletButton>
         </NavbarRightContent>
       </NavbarContainer>
-      {sidebarVisibility && <Sidebar />}
+      {sidebarVisibility && <Sidebar hideSidebar={hideSidebar} />}
     </>
   );
 };
