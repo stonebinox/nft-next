@@ -7,13 +7,10 @@ import { Footer } from "@/components/footer";
 import { NFTForm } from "@/components/nft-form";
 import styles from "@/app/page.module.css";
 import { Main } from "@/app/page.styles";
-import { useModalContext } from "@/helpers/modal-context";
 
 export const HomePage = () => {
-  const { modalVisibility } = useModalContext();
-
   return (
-    <Main className={styles.main} isinactive={`${modalVisibility}`}>
+    <Main className={styles.main}>
       <Navbar />
       <PageTitle
         title="Mint New NFT"

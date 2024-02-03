@@ -1,18 +1,11 @@
 import styled from "styled-components";
 
 import { colors } from "@/utils/colors";
-import {
-  BASE_SPACING,
-  HALF_BASE_SPACING,
-  customSpacing,
-} from "@/utils/spacing";
+import { BASE_SPACING, customSpacing } from "@/utils/spacing";
 
 export const Main = styled.main`
   background: url(/assets/bg.png) no-repeat center;
   background-size: cover;
-
-  ${({ isinactive }) =>
-    isinactive === "true" && `filter: blur(${HALF_BASE_SPACING})`}
 `;
 
 export const CommonText = styled.div`
