@@ -55,6 +55,12 @@ export const NFTForm = () => {
     showModal();
   };
 
+  const modalButtonClick = (e) => {
+    e.preventDefault();
+    // we'd attempt posting the item here
+    console.log("does nothing");
+  };
+
   return (
     <>
       <FormContainer name="nftupload">
@@ -64,7 +70,12 @@ export const NFTForm = () => {
           </ErrorContainer>
         )}
         <FileSelector onClick={fileClick}>
-          <HiddenFileSelector type="file" name="file" onChange={fileSelect} />
+          <HiddenFileSelector
+            type="file"
+            name="file"
+            onChange={fileSelect}
+            accept=".jpg,.jpeg,.png,.bmp"
+          />
           <FileSelectorTitle>
             <Image
               src="/assets/upload-icon.svg"
@@ -95,7 +106,12 @@ export const NFTForm = () => {
         </ButtonGroup>
       </FormContainer>
       {modalVisibility && (
-        <Modal image={selectedFile} title={nftTitle} description={nftDesc} />
+        <Modal
+          image={selectedFile}
+          title={nftTitle}
+          description={nftDesc}
+          buttonClick={modalButtonClick}
+        />
       )}
     </>
   );

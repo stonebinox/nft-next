@@ -16,7 +16,7 @@ export const ModalContainer = styled.div`
   border-radius: ${BASE_SPACING};
   border-left: 1px solid rgba(255, 255, 255, 0.2);
   position: absolute;
-  top: ${customSpacing("220")};
+  top: 15%;
   left: calc((100% - ${customSpacing("457")}) / 2);
   display: flex;
   flex-direction: column;

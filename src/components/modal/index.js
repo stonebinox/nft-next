@@ -10,7 +10,7 @@ import {
 import { Button } from "@/app/page.styles";
 import { useModalContext } from "@/helpers/modal-context";
 
-export const Modal = ({ title, image, description }) => {
+export const Modal = ({ title, image, description, buttonClick }) => {
   const [loadedImage, setLoadedImage] = useState(null);
   const { hideModal } = useModalContext();
 
@@ -39,7 +39,9 @@ export const Modal = ({ title, image, description }) => {
         )}
         <ModalTitle>{title}</ModalTitle>
         <ModalDescription>{description}</ModalDescription>
-        <Button type="primary">Continue</Button>
+        <Button type="primary" onClick={buttonClick}>
+          Continue
+        </Button>
       </ModalContainer>
     </ModalBackdrop>
   );
