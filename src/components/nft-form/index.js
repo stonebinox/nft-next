@@ -61,7 +61,7 @@ export const NFTForm = () => {
   };
 
   const modalButtonClick = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     // we'd attempt posting the item here
     try {
       setError("");

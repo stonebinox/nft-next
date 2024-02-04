@@ -12,6 +12,7 @@ import { useModalContext } from "@/helpers/modal-context";
 
 export const Modal = ({ title, image = null, description, buttonClick }) => {
   const [loadedImage, setLoadedImage] = useState(null);
+  const [buttonClicked, setButtonClicked] = useState(false);
   const { hideModal } = useModalContext();
 
   useEffect(() => {
@@ -31,6 +32,11 @@ export const Modal = ({ title, image = null, description, buttonClick }) => {
     }
   };
 
+  const handleClick = () => {
+    setButtonClicked(true);
+    buttonClick();
+  };
+
   return (
     <ModalBackdrop onClick={backdropClick} id="modal-backdrop">
       <ModalContainer>
@@ -39,8 +45,8 @@ export const Modal = ({ title, image = null, description, buttonClick }) => {
         )}
         <ModalTitle>{title}</ModalTitle>
         <ModalDescription>{description}</ModalDescription>
-        <Button type="primary" onClick={buttonClick}>
-          Continue
+        <Button type="primary" onClick={handleClick} disabled={buttonClicked}>
+          {buttonClicked ? "Loading, please wait" : "Continue"}
         </Button>
       </ModalContainer>
     </ModalBackdrop>
