@@ -10,7 +10,7 @@ import {
 import { Button } from "@/app/page.styles";
 import { useModalContext } from "@/helpers/modal-context";
 
-export const Modal = ({ title, image, description, buttonClick }) => {
+export const Modal = ({ title, image = null, description, buttonClick }) => {
   const [loadedImage, setLoadedImage] = useState(null);
   const { hideModal } = useModalContext();
 

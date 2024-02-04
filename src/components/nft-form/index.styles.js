@@ -17,6 +17,7 @@ export const FormContainer = styled.form`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: ${customSpacing("128")};
 `;
 
 export const FileSelector = styled.div`
@@ -32,6 +33,7 @@ export const FileSelector = styled.div`
   align-items: center;
   margin-bottom: ${BASE_SPACING};
   cursor: pointer;
+  overflow-y: hidden;
 `;
 
 export const FileSelectorTitle = styled(CommonText)`
@@ -89,6 +91,7 @@ export const ButtonGroup = styled.div`
 
 export const ErrorContainer = styled.div`
   width: 100%;
+  height: auto;
   text-align: center;
   border: 1px solid ${colors.red};
   border-radius: ${customSpacing("5")};
@@ -97,6 +100,11 @@ export const ErrorContainer = styled.div`
   background-color: ${colors.redLight};
 `;
 
-export const ErrorText = styled(CommonText)`
+export const AlertText = styled(CommonText)`
   color: ${colors.white};
+`;
+
+export const SuccessContainer = styled(ErrorContainer)`
+  border: 1px solid ${colors.green};
+  background-color: ${colors.greenDark};
 `;
