@@ -35,7 +35,7 @@ export const NFTForm = () => {
     setSelectedFile(e.currentTarget.files[0]);
   };
 
-  const submitForm = (e) => {
+  const submitForm = (e, mint = true) => {
     e.preventDefault();
 
     setSuccess("");
@@ -112,6 +112,10 @@ export const NFTForm = () => {
       hideModal();
       document.nftupload.reset();
       setSelectedFile(null);
+
+      if (mint) {
+        // we'd mint the NFT from here
+      }
     } catch (e) {
       console.log(e);
       setError("Something wwent wrong. Try again later.");
@@ -164,7 +168,9 @@ export const NFTForm = () => {
           onChange={(e) => setNftDesc(e.currentTarget.value)}
         />
         <ButtonGroup>
-          <Button onClick={submitForm}>Mint without listing</Button>
+          <Button onClick={(e) => submitForm(e, false)}>
+            Mint without listing
+          </Button>
           <Button type="primary" onClick={submitForm}>
             Mint and list immediately
           </Button>
