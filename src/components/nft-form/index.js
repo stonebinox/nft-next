@@ -25,10 +25,11 @@ export const NFTForm = () => {
   const [nftDesc, setNftDesc] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [mint, setMint] = useState(true);
   const { showModal, hideModal, modalVisibility } = useModalContext();
 
   const fileClick = () => {
-    document.nftupload.file.click();
+    document.getElementById("fileselector").click();
   };
 
   const fileSelect = (e) => {
@@ -39,6 +40,7 @@ export const NFTForm = () => {
     e.preventDefault();
 
     setSuccess("");
+    setMint(mint);
 
     if (!selectedFile) {
       setError("Please select a file.");
@@ -118,7 +120,7 @@ export const NFTForm = () => {
       }
     } catch (e) {
       console.log(e);
-      setError("Something wwent wrong. Try again later.");
+      setError("Something went wrong. Try again later.");
       hideModal();
     }
   };
@@ -137,14 +139,6 @@ export const NFTForm = () => {
           </SuccessContainer>
         )}
         <FileSelector onClick={fileClick}>
-          <HiddenFileSelector
-            type="file"
-            name="file"
-            onChange={fileSelect}
-            accept=".jpg,.jpeg,.png,.bmp"
-            width="200"
-            height="200"
-          />
           <FileSelectorTitle>
             <Image
               src="/assets/upload-icon.svg"
@@ -176,6 +170,14 @@ export const NFTForm = () => {
           </Button>
         </ButtonGroup>
       </FormContainer>
+      <HiddenFileSelector
+        type="file"
+        id="fileselector"
+        onChange={fileSelect}
+        accept=".jpg,.jpeg,.png,.bmp"
+        width="200"
+        height="200"
+      />
       {modalVisibility && (
         <Modal
           image={selectedFile}
