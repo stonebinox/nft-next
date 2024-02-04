@@ -32,6 +32,7 @@ export const ModalBackdrop = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.32);
   backdrop-filter: blur(${HALF_BASE_SPACING});
+  z-index: 3;
 `;
 
 export const ModalImage = styled.img`

@@ -12,6 +12,7 @@ export const FooterContainer = styled.div`
   padding-top: ${BASE_SPACING};
   padding-bottom: ${BASE_SPACING};
   background-color: ${colors.black};
+  z-index: 1;
 `;
 
 export const FooterContent = styled.div`

@@ -18,6 +18,7 @@ export const SidebarContainer = styled.div`
   background-color: ${colors.black};
   padding: ${BASE_SPACING};
   border-left: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
 `;
 
 export const SidebarContent = styled.div`
