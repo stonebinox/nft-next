@@ -59,6 +59,7 @@ export const WalletContainer = styled.div`
   background-color: ${colors.greyDarker};
   border-radius: ${customSpacing("10")};
   margin-bottom: ${BASE_SPACING};
+  cursor: pointer;
 `;
 
 export const WalletTitle = styled(CommonText)`
