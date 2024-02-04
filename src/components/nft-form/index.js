@@ -69,7 +69,6 @@ export const NFTForm = () => {
       formdata.append("file", selectedFile);
       const metadata = JSON.stringify({
         name: nftTitle,
-        description: nftDesc,
       });
       formdata.append("pinataMetadata", metadata);
 
