@@ -17,6 +17,7 @@ import {
 import { Button } from "@/app/page.styles";
 import { useModalContext } from "@/helpers/modal-context";
 import { Modal } from "../modal";
+import { uploadImage, uploadMetadata } from "@/helpers/api";
 
 export const NFTForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -72,33 +73,49 @@ export const NFTForm = () => {
       });
       formdata.append("pinataMetadata", metadata);
 
-      const response = await fetch(
-        "https://api.pinata.cloud/pinning/pinFileToIPFS",
-        {
-          method: "POST",
-          body: formdata,
-          headers: {
-            // ideally we'd need this in an env file
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI0ZmYxYzMxYy1hMzZiLTQ4NjMtYTEwNi04OTA0ZDM0OTA1YWYiLCJlbWFpbCI6ImFub29wLnNhbnRoYW5hbUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6IkZSQTEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX0seyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiZDY4Y2I2OWU0M2I3NWFhOTFjODAiLCJzY29wZWRLZXlTZWNyZXQiOiI4ZDJmYzdhNzNkYmVlYWFmYWJmYzA5ODBiYzAzMzQ0MmJmMjEyOGI0NjdjNTE2M2Y5MDIyMjRiNmQzNzk2NTg1IiwiaWF0IjoxNzA2OTY4OTU4fQ.1RPRCxSfad4UoAcRdYBF1VotqmVND8LhGm74K-MRX5I",
-          },
-        }
-      );
+      const response = await uploadImage(formdata);
 
       const data = await response.json();
       const { IpfsHash } = data;
-      console.log(IpfsHash);
+      const imageUrl = `ipfs://${IpfsHash}`;
 
-      setSuccess(`Created item:\n${IpfsHash}`);
+      processMetadata(imageUrl);
+    } catch (e) {
+      setError("Something went wrong. Try again later.");
+      hideModal();
+      console.log(e);
+    }
+  };
+
+  const processMetadata = async (imageUrl) => {
+    try {
+      const data = JSON.stringify({
+        pinataContent: {
+          name: nftTitle,
+          description: nftDesc,
+          external_url: "https://pinata.cloud",
+          image: imageUrl,
+        },
+        pinataMetadata: {
+          name: `${nftTitle}.json`,
+        },
+      });
+
+      const response = await uploadMetadata(data);
+
+      const parsedData = await response.json();
+      const { IpfsHash } = parsedData;
+
+      setSuccess(`Created CID:\n${IpfsHash}`);
       setNftDesc("");
       setNftTitle("");
       hideModal();
       document.nftupload.reset();
       setSelectedFile(null);
     } catch (e) {
-      setError("Something went wrong. Try again later.");
-      hideModal();
       console.log(e);
+      setError("Something wwent wrong. Try again later.");
+      hideModal();
     }
   };
 
